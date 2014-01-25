@@ -22,7 +22,7 @@ function ret = Write3DPointCloundsToPlyFile(outFileName, pts, rgb)
         fprintf(fid, 'property uchar red\r\n');
         fprintf(fid, 'property uchar green\r\n');
         fprintf(fid, 'property uchar blue\r\n');
-        data = [data rgb];
+        data = [data single(rgb)];
     end
 
     fprintf(fid, 'end_header\r\n');    
