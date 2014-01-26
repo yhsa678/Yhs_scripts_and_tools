@@ -1,5 +1,5 @@
-function ret = Write3DPointCloundsToPlyFile(outFileName, pts, rgb)
-% Write out a .ply file with 3D point clouds, optionally have color
+function ret = Write3DPointsToPlyFile(outFileName, pts, rgb)
+% Write out a .ply file with 3D points, optionally have color
 % texture
 
     if nargin < 3

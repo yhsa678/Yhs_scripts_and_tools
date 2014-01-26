@@ -1,5 +1,5 @@
-function ret = Write3DPointCloudsToPlyBin(plyFileName, pts, rgb)
-% same function as Write3DPointCloudsToPlyFile, but in binary format
+function ret = Write3DPointsToPlyBin(plyFileName, pts, rgb)
+% same function as Write3DPointsToPlyFile, but in binary format
 
     % coordinate is 3 * n single matrix for n points
     % rgb        is 3 * n uint8  matrix for n points range [0, 255]
