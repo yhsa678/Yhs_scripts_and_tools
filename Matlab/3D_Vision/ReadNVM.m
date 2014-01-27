@@ -22,11 +22,11 @@ function [camera, points3D] = ReadNVM(nvmFileName)
         assert(numel(data{1}) == 10, 'Camera format is not correct!\n');
         camera(i).name = imgFileName{1}{1};
         camera(i).focalLength = data{1}(1);
-        camera(i).quarternion = [data{1}(2),data{1}(3), data{1}(4), data{1}(5)];
+        camera(i).quaternion = [data{1}(2),data{1}(3), data{1}(4), data{1}(5)];
 
-    %      R = quaternion2matrix(camera(i).quarternion);
-    %     assert(abs(norm(camera(i).quarternion) - 1)<0.0001)
-        camera(i).quarternion = camera(i).quarternion./norm(camera(i).quarternion);
+    %      R = quaternion2matrix(camera(i).quaternion);
+    %     assert(abs(norm(camera(i).quaternion) - 1)<0.0001)
+        camera(i).quaternion = camera(i).quaternion./norm(camera(i).quaternion);
         camera(i).pos = [data{1}(6),data{1}(7), data{1}(8)];
     %     camera(i).distortion = [data{1}(9),data{1}(10)];
         % [change by yhs]

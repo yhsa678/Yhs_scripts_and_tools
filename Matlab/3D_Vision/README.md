@@ -11,5 +11,15 @@
 	- Show3DPoints.m
 	- Show3DPointsInNVMFile.m
 
+
+# Folder #
+- Depth_Utility
+	- Functions read, write and process depthmap related work
+
+- Geometry_Utility
+	- Functions related to camera geometry
+
+
+
 [ezheng]: https://github.com/ezheng/script
 [vision-princeton]: http://vision.princeton.edu/pvt/points2ply.m
