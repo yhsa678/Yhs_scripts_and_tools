@@ -5,10 +5,10 @@ function [camera, points3D] = ReadNVM(nvmFileName)
     % Output: cameras and 3d points
 
     fid = fopen(nvmFileName);
-    assert(fid>0);
+    assert(fid>0, sprintf('Read %s file error!\n', nvmFileName));
 
     str = fgets(fid);
-    assert(all(strtrim(str) == 'NVM_V3'));
+    assert(all(strtrim(str) == 'NVM_V3'), 'Not valid NVM_V3 file\n');
 
     % skip empty line?
     str = fgets(fid);
@@ -19,7 +19,7 @@ function [camera, points3D] = ReadNVM(nvmFileName)
         str = fgets(fid);
         [imgFileName, pos ] = textscan(str, '%s', 1);
         data = textscan(str(pos+1 : end), '%f');
-        assert(numel(data{1}) == 10);
+        assert(numel(data{1}) == 10, 'Camera format is not correct!\n');
         camera(i).name = imgFileName{1}{1};
         camera(i).focalLength = data{1}(1);
         camera(i).quarternion = [data{1}(2),data{1}(3), data{1}(4), data{1}(5)];
@@ -31,7 +31,7 @@ function [camera, points3D] = ReadNVM(nvmFileName)
     %     camera(i).distortion = [data{1}(9),data{1}(10)];
         % [change by yhs]
         camera(i).distortion = data{1}(9);
-        assert(data{1}(10) == 0);
+        assert(data{1}(10) == 0, 'Camera last value should be 0!\n');
     end
 
     % skip empty line?
@@ -46,7 +46,7 @@ function [camera, points3D] = ReadNVM(nvmFileName)
     end
     for i = 1:numOf3DPoints 
         if mod(i, 100) == 0
-           fprintf( '%f%% percent is finished\n', i/numOf3DPoints *100 );
+           fprintf( '%f%% percent is finished\n', i/numOf3DPoints * 100 );
         end
         str = fgets(fid);
         data = textscan(str, '%f');
@@ -59,7 +59,8 @@ function [camera, points3D] = ReadNVM(nvmFileName)
             measure(j,:) = data{1}( (j-1) * 4 +1 + 7: (j-1) * 4 +4 + 7);   
             %        imageIdx, featureIdx, x, y
             imageIdx = measure(j,1);
-            assert( imageIdx >= 0 && imageIdx <= numOfImages-1)
+            assert( imageIdx >= 0 && imageIdx <= numOfImages-1, ...
+                sprintf('Point should be lie in [0-%d] images!\n', numOfImages-1));
         end
         points3D(i).measure = measure;   
         %    a = [a; measure];
