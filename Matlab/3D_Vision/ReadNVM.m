@@ -26,9 +26,11 @@ function [camera, points3D] = ReadNVM(nvmFileName)
 
     %      R = quaternion2matrix(camera(i).quaternion);
     %     assert(abs(norm(camera(i).quaternion) - 1)<0.0001)
+        % make sure quaternion to have unit norm
         camera(i).quaternion = camera(i).quaternion./norm(camera(i).quaternion);
         camera(i).pos = [data{1}(6),data{1}(7), data{1}(8)];
-    %     camera(i).distortion = [data{1}(9),data{1}(10)];
+        
+        % camera(i).distortion = [data{1}(9),data{1}(10)];
         % [change by yhs]
         camera(i).distortion = data{1}(9);
         assert(data{1}(10) == 0, 'Camera last value should be 0!\n');
