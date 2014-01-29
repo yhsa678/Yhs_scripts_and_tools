@@ -1,7 +1,7 @@
-function GeneratePlyFromOneDepthmap(plyFilename, cam, depthmap, sample)
+function [pts3d, rgb] = GeneratePointCloudsFromOneDepthmap(cam, depthmap, sample)
 % generate 3D point clouds from one depthmap and its camera
 % use intrisic matrix only, under camera coordinate
-    if nargin < 4
+    if nargin < 3
         sample = 1;
     end
     
@@ -16,7 +16,12 @@ function GeneratePlyFromOneDepthmap(plyFilename, cam, depthmap, sample)
     depthValue = depthmap(ind);
     
     img = imread(cam.imgpath);
-    RR = img(:,:,1); GG = img(:,:,2); BB = img(:,:,3);
+    if cam.channel == 1
+        % if it is gray image
+        RR = img; GG = img; BB = img;
+    else
+        RR = img(:,:,1); GG = img(:,:,2); BB = img(:,:,3);
+    end
     colorR = RR(ind); colorG = GG(ind); colorB = BB(ind);
     CC = [colorR', colorG', colorB'];
     
@@ -24,5 +29,6 @@ function GeneratePlyFromOneDepthmap(plyFilename, cam, depthmap, sample)
     points2D = ([X; Y; ones(size(X))] .* repmat(depthValue, 3, 1)); 
     points3D = K\points2D;
     
-    Write3DPointsToPlyFile(plyFilename, points3D, CC);
+    pts3d = points3D;
+    rgb = CC;
 end
