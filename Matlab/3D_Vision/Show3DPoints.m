@@ -1,7 +1,11 @@
-function Show3DPoints(points3d, sampleRate)
+function Show3DPoints(points3d, axisRange, sampleRate)
 
-    if nargin < 2
+    if nargin < 3
         sampleRate = 0.01; % show 1%'s points
+    end
+    
+    if nargin < 2
+        axisRange = [];
     end
     
     numPoints = size(points3d, 1);
@@ -14,6 +18,9 @@ function Show3DPoints(points3d, sampleRate)
     % subplot(3,1,1);
     plot3(points(:,1), points(:,2), points(:,3), '*');
     axis equal;
+    if ~isempty(axisRange)
+        axis(axisRange);
+    end
     xlabel('x');
     ylabel('y');
     zlabel('z');
@@ -24,6 +31,9 @@ function Show3DPoints(points3d, sampleRate)
     figure(2);
     plot3(points(:,1), points(:,2), points(:,3), '*');
     axis equal;
+    if ~isempty(axisRange)
+        axis(axisRange);
+    end
     xlabel('x');
     ylabel('y');
     zlabel('z');
@@ -34,6 +44,9 @@ function Show3DPoints(points3d, sampleRate)
     % subplot(3,1,3);
     plot3(points(:,1), points(:,2), points(:,3), '*');
     axis equal;
+    if ~isempty(axisRange)
+        axis(axisRange);
+    end
     xlabel('x');
     ylabel('y');
     zlabel('z');
