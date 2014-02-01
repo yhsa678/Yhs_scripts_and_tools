@@ -28,9 +28,9 @@ function ret = Write3DPointsToPlyBin(plyFileName, pts, rgb)
     fprintf (file, 'ply\n');
     fprintf (file, 'format binary_little_endian 1.0\n');
     fprintf (file, 'element vertex %d\n', size(data,2));
-    fprintf (file, 'property float32 x\n');
-    fprintf (file, 'property float32 y\n');
-    fprintf (file, 'property float32 z\n');
+    fprintf (file, 'property float x\n');
+    fprintf (file, 'property float y\n');
+    fprintf (file, 'property float z\n');
     if nargin>2
         fprintf (file, 'property uchar red\n');
         fprintf (file, 'property uchar green\n');

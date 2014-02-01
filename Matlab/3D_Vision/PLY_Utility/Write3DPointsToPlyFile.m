@@ -23,9 +23,9 @@ function ret = Write3DPointsToPlyFile(outFileName, pts, rgb)
     fprintf(fid, 'ply\r\n');
     fprintf(fid, 'format ascii 1.0\r\n');
     fprintf(fid, 'element vertex %d\r\n', num);
-    fprintf(fid, 'property float32 x\r\n');
-    fprintf(fid, 'property float32 y\r\n');
-    fprintf(fid, 'property float32 z\r\n');
+    fprintf(fid, 'property float x\r\n');
+    fprintf(fid, 'property float y\r\n');
+    fprintf(fid, 'property float z\r\n');
 
     data = pts;
     % difference between uchar and diffuse_uchar?

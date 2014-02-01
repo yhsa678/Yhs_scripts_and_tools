@@ -8,6 +8,9 @@ function numPro = BatchPrintDepthMap(folder)
 
 d = dir(folder);
 d(1:2) = [];
+
+curDir = pwd;
+
 cd(folder);
 
 for k = 1:length(d)
@@ -20,12 +23,15 @@ for k = 1:length(d)
 
     hFig = figure(1); clf;
     colormap('jet');
-    imagesc(dep);
+    imagesc(dep), axis('equal');
+    colorbar;
     
-    print(hFig, '-dpng', [d(k).name(1:strfind(d(k).name, '.')) 'png']);
+    PrintFigureToFile(hFig, d(k).name(1:strfind(d(k).name, '.')-1), 'png');
+    % print(hFig, '-dpng', [d(k).name(1:strfind(d(k).name, '.')) 'png']);
 end
 
 numPro = length(d);
-cd('..');
+
+cd(curDir);
 return
 

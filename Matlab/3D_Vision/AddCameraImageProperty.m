@@ -11,7 +11,13 @@ function cam = AddCameraImageProperty(camera, camImgFolder)
         filename = camera(k).name;
         
         % temporarily the camImgFolder is given by user
-        camera(k).imgpath = fullfile(camImgFolder, filename);
+        [~, ~, fileExt] = fileparts(filename);
+        if isempty(fileExt)
+            % temporarily add the file extension due to not using pcdb file
+            camera(k).imgpath = fullfile(camImgFolder, [filename '.jpg']);
+        else
+            camera(k).imgpath = fullfile(camImgFolder, filename);
+        end
         
         img = imread(camera(k).imgpath);
         camera(k).height = size(img, 1);

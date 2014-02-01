@@ -2,6 +2,8 @@
 - Read and write NVM file which is used by VisualSFM
 	- partially adapted from [Credit: Enliang Zheng][ezheng]
 	- ReadNVM.m
+	- AddCameraImageProperty.m
+	- CalcKRTfromNVMCamera.m
 	- Show3DPoints.m
 	- Show3DPointsInNVMFile.m
 

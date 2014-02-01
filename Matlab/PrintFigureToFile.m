@@ -4,5 +4,5 @@ function PrintFigureToFile(hFig, fileName, fileExt)
         fileExt = 'png';
     end
     
-    print(hFig, ['-d' fileExt], [filename '.' fileExt]);
+    print(hFig, ['-d' fileExt], [fileName '.' fileExt]);
 end
