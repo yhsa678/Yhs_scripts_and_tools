@@ -17,7 +17,7 @@ function [camera, points3D] = ReadNVM(nvmFileName)
     numOfImages = str2num(fgets(fid));
     for i = 1:numOfImages
         str = fgets(fid);
-        [imgFileName, pos ] = textscan(str, '%s', 1);
+        [imgFileName, pos] = textscan(str, '%s', 1);
         data = textscan(str(pos+1 : end), '%f');
         assert(numel(data{1}) == 10, 'Camera format is not correct!\n');
         camera(i).name = imgFileName{1}{1};

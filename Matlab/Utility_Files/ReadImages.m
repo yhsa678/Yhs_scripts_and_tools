@@ -2,6 +2,8 @@ function list = ReadImages(folder, ext)
     
     if nargin < 2
         ext = '.';
+    else 
+        ext = upper(ext);
     end
     % read images from a folder, store it as a list
     if folder == '.'
@@ -13,7 +15,8 @@ function list = ReadImages(folder, ext)
     
     imgId = 1;
     for k = 1:numel(d)
-        if isempty(strfind(d(k).name, ext))
+        % all convert to uppercase to find if it contain certain extension
+        if isempty(strfind(upper(d(k).name), ext))
             continue;
         end
         
