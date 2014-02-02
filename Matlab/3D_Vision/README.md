@@ -7,11 +7,16 @@
 	- Show3DPoints.m
 	- Show3DPointsInNVMFile.m
 
+- Create point clouds
+	- GeneratePointCloudsFromOneDepthmap.m
+	- GeneratePointCloudsFromOneDepthmapGlobal.m
+
 # Folder #
 - Depth_Utility
 	- Functions read, write and process depthmap related work
 	- LoadFLTFile.m
 	- WriteFLTFile.m
+	- BatchPrintDepthMap.m - visualize `.flt`
 
 - Geometry_Utility
 	- Functions related to camera geometry
