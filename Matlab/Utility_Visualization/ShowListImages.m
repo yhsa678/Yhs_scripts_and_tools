@@ -1,4 +1,4 @@
-function ShowListImages(list, showNum, Nx, Ny, timeout, windowSize)
+function ShowListImages(list, showNum, Nx, Ny, timeout, windowSize, figId)
 %
 % show Nx*Ny images in the list
 %
@@ -21,11 +21,20 @@ if nargin < 6
     windowSize= [0 0 1280 720];
 end
 
+ if ~exist('figId', 'var')
+        figId = 1;
+    end
+
 Dx = 1/Nx; Dy = 1/Ny;
 
 i = 0;
 while i<Nimages && i<showNum
-    hFig = figure;
+    hFig = figure(figId);
+    
+    if mod(i, 50) == 0
+        figure(hFig), clf;
+    end
+    
     set(gcf,'Position',windowSize);
     for y = Ny-1:-1:0
         for x = 0:Nx-1
