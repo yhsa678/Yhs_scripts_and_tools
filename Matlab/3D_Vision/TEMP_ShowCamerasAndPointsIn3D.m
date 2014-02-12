@@ -1,5 +1,6 @@
 function ShowCamerasAndPointsIn3D(modelfile, option)
-
+% option == 1, show '.nvm' file
+% option == 2, show pre-saved mat, which contains variable 'cam' and 'p3d'
 if nargin < 2
     option = 1;
 end
@@ -22,6 +23,7 @@ xlabel('x'); ylabel('y'); zlabel('z');
 axis vis3d
 axis([-1.5 0.1 -1 0.3 -0.1 0.5]);
 
+% only draw a subset of 3d points
 ptsShowFlag = zeros(numel(p3d), 1);
 ptsShowFlag(1:5:end) = 1;
 
