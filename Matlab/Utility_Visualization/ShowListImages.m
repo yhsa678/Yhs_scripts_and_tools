@@ -2,28 +2,33 @@ function ShowListImages(list, showNum, Nx, Ny, timeout, windowSize, figId)
 %
 % show Nx*Ny images in the list
 %
-
+% adapted code from labelmeToolbox
 
 Nimages = numel(list);
-if nargin < 4
+if ~exist('Nx', 'var') | ~exist('Ny', 'var')
     Nx = 6; Ny = 5; % will show 6x5 images per figure
 end
 
-if nargin < 2
+if ~exist('showNum', 'var')
+    
     showNum = Nimages;
 end
 
-if nargin < 5
+if showNum < 0
+    showNum = Nimages;
+end
+
+if ~exist('timeout', 'var')
     timeout = 0.001;
 end
 
-if nargin < 6
-    windowSize= [0 0 1280 720];
+if ~exist('windowSize', 'var')
+    windowSize= [200 200 640 480];
 end
 
- if ~exist('figId', 'var')
-        figId = 1;
-    end
+if ~exist('figId', 'var')
+    figId = 1;
+end
 
 Dx = 1/Nx; Dy = 1/Ny;
 
@@ -32,6 +37,8 @@ while i<Nimages && i<showNum
     hFig = figure(figId);
     
     if mod(i, 50) == 0
+        % clear figures to speed up the visualization a bit
+        % initially only used for 1x1 case
         figure(hFig), clf;
     end
     
