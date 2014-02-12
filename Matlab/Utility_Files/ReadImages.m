@@ -1,6 +1,6 @@
 function list = ReadImages(folder, ext)
     
-    if nargin < 2
+    if ~exist('ext', 'var')
         ext = '.';
     else 
         ext = upper(ext);
