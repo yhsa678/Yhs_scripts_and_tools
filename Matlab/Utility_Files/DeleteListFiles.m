@@ -7,4 +7,5 @@ function ct = DeleteListFiles(list)
             ct = ct+1;
         end
     end
+    fprintf(1, '%d files are deleted!\n', ct);
 end
