@@ -4,9 +4,14 @@ tic
 toc
 
 tic
-[c, p, v] = read_nvm_and_image_dimensions('bi.nvm', [pwd '\image']);
+[cam2, pts, ptsinfo] = read_nvm_and_image_dimensions('bi.nvm', [pwd '\image']);
 toc
-
 %%
+cam = AddCameraImageProperty(cam, [pwd '\image']);
+cam = CalcKRTfromNVMCamera(cam);
+%%
+pw1 = p3d(1).pos;
 
-cam(1)
+% pc1 = pw1
+
+pw2 = pts.xyzs(:, 1);
