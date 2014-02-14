@@ -6,10 +6,14 @@ function imglist = RankNeighborBasedOnGist(imglist, selRankList)
 
     for k = 1:numel(imglist)
         fprintf(1, 'Calculating gist of no. %d of %d...\n', k, numel(imglist));
+        if isfield(imglist(k), 'gist')
+            fprintf(1, 'Gist descriptor existed, skipped!\n');
+            continue;
+        end
         imglist(k).gist = GetImageGist(imglist(k).img);
     end
     
-    if ~exist(selRankList, 'var')
+    if ~exist('selRankList', 'var')
         selRankList = 1:numel(imglist);
     end
     
