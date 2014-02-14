@@ -20,9 +20,9 @@ function list = ReadImages(folder, ext)
             continue;
         end
         
-        list(imgId).imgpath = fullfile(folder, d(k).name);
-        fprintf(1, 'No. %d of %d\nReading image %s...\n', k, numel(d), list(imgId).imgpath);
-        list(imgId).img = imread(list(imgId).imgpath);
+        list(imgId).filepath = fullfile(folder, d(k).name);
+        fprintf(1, 'No. %d of %d\nReading image %s...\n', k, numel(d), list(imgId).filepath);
+        list(imgId).img = imread(list(imgId).filepath);
         if size(list(imgId).img, 3) == 1
             list(imgId).img = repmat(list(imgId).img, [1, 1, 3]);
         end
