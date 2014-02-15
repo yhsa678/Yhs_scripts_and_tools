@@ -1,4 +1,4 @@
-function dout = LoadFLTFile(fileName)
+function dout = LoadFLTFile(fileName, isShow)
 % Load .flt file, a format that used by Enliang's depth map
 % depth map format: 
 % width, height, channels in ascii
@@ -16,4 +16,9 @@ fclose(fid);
 dout = reshape(D, [width, height]);
 dout = dout';
 
-% figure, imagesc(dout), axis equal;
+if ~exist('isShow', 'var')
+    isShow = false;
+end
+if isShow
+    figure; imagesc(dout); colormap(jet); colorbar; axis equal; axis tight;
+end

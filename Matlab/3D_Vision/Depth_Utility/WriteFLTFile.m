@@ -1,4 +1,4 @@
-function WriteFLTFile( fileName, data)
+function WriteFLTFile(fileName, data)
 
 [height, width, channels] = size(data);
 
