@@ -23,18 +23,22 @@ if ~exist('timeout', 'var')
 end
 
 if ~exist('windowSize', 'var')
-    windowSize= [200 200 640 480];
+    windowSize= [100 100 640 480];
 end
 
 if ~exist('figId', 'var')
-    figId = 1;
+    figId = -1;
 end
 
 Dx = 1/Nx; Dy = 1/Ny;
 
 i = 0;
 while i<Nimages && i<showNum
-    hFig = figure(figId);
+    if figId == -1
+        hFig = figure;
+    else
+        hFig = figure(figId);
+    end
     
     if mod(i, 50) == 0
         % clear figures to speed up the visualization a bit

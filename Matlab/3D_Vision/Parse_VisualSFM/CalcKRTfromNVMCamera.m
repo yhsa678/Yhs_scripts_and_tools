@@ -6,7 +6,7 @@ function cam = CalcKRTfromNVMCamera(camera)
 
     for i = 1:numel(camera)
         if mod(i, 100) == 0
-            fprintf( '%f%% percent is finished\n', i/numel(camera)*100 );
+            fprintf( '%f%% calculating K,R,T is finished, total = %d\n', i/numel(camera)*100, numel(camera));
         end
         % intrinsic
         camera(i).K = [camera(i).focalLength, 0, camera(i).width/2.0;

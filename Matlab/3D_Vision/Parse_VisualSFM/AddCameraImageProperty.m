@@ -5,7 +5,7 @@ function cam = AddCameraImageProperty(camera, camImgFolder)
 
     for k = 1:numel(camera)
          if mod(k, 100) == 0
-            fprintf( '%f%% percent is finished\n', k/numel(camera)*100 );
+            fprintf( '%f%% add camera images is finished, total = %d\n', k/numel(camera)*100, numel(camera));
         end
         
         filename = camera(k).name;
@@ -14,12 +14,12 @@ function cam = AddCameraImageProperty(camera, camImgFolder)
         [~, ~, fileExt] = fileparts(filename);
         if isempty(fileExt)
             % temporarily add the file extension due to not using pcdb file
-            camera(k).imgpath = fullfile(camImgFolder, [filename '.jpg']);
+            camera(k).filepath = fullfile(camImgFolder, [filename '.jpg']);
         else
-            camera(k).imgpath = fullfile(camImgFolder, filename);
+            camera(k).filepath = fullfile(camImgFolder, filename);
         end
         
-        img = imread(camera(k).imgpath);
+        img = imread(camera(k).filepath);
         camera(k).height = size(img, 1);
         camera(k).width = size(img, 2);
         camera(k).channel = size(img, 3);

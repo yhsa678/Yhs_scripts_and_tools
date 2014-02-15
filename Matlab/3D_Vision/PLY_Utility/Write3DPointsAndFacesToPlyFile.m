@@ -1,8 +1,10 @@
-function ret = Write3DPointsToPlyFile(outFileName, pts, rgb, faces)
+function ret = Write3DPointsAndFacesToPlyFile(outFileName, pts, rgb, faces)
 % Write out a .ply file with 3D points and faces, optionally have color
 % texture
-
-    if nargin < 3
+    
+    assert(logical(exist('faces', 'var')), 'faces variable must be existed! Or call the one without using faces');
+    
+    if ~exist('rgb', 'var')
         rgb = [];
     end
     
@@ -36,10 +38,12 @@ function ret = Write3DPointsToPlyFile(outFileName, pts, rgb, faces)
         data = [data single(rgb)];
     end
     
-    % output faces
-    numFaces = size(faces, 1);
-    fprintf(fid, 'element face %d\r\n', numFaces);
-    fprintf(fid, 'property list uint8 int32 vertex_indices\r\n');
+    if exist('faces', 'var')
+        % output faces
+        numFaces = size(faces, 1);
+        fprintf(fid, 'element face %d\r\n', numFaces);
+        fprintf(fid, 'property list uint8 int32 vertex_indices\r\n');
+    end
     
 
     fprintf(fid, 'end_header\r\n');    
@@ -59,7 +63,14 @@ function ret = Write3DPointsToPlyFile(outFileName, pts, rgb, faces)
         fprintf(fid, '%f %f %f %u %u %u\r\n', data');
     end
     
-    fprintf(fid, '%d %d %d %d %d\r\n', faces');
+    if exist('faces', 'var')
+        fmtstr = '';
+        for k = 1:size(faces, 2)
+            fmtstr = [fmtstr '%d '];
+        end
+        fmtstr = [strtrim(fmtstr) '\r\n'];
+        fprintf(fid, fmtstr, faces');
+    end
     
     fclose(fid);
 

@@ -47,8 +47,8 @@ function [camera, points3D] = ReadNVM(nvmFileName)
         points3D = [];
     end
     for i = 1:numOf3DPoints 
-        if mod(i, 100) == 0
-           fprintf( '%f%% percent is finished\n', i/numOf3DPoints * 100 );
+        if mod(i, 1000) == 0
+           fprintf( '%f%% points is finished, total = %d\n', i/numOf3DPoints * 100, numOf3DPoints);
         end
         str = fgets(fid);
         data = textscan(str, '%f');

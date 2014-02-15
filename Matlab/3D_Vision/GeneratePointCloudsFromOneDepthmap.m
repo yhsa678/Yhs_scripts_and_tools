@@ -1,8 +1,17 @@
-function [pts3d, rgb] = GeneratePointCloudsFromOneDepthmap(cam, depthmap, sample)
+function [pts3d, rgb, faces] = GeneratePointCloudsFromOneDepthmap(cam, depthmap, sample, showCam)
 % generate 3D point clouds from one depthmap and its camera
 % use intrisic matrix only, under camera coordinate
-    if nargin < 3
+% optionally: 
+% output camera projection center and image plane
+% i.e. 5 points: camera center, upleft, upright, lowleft, lowright of image
+% plane, and 6 faces of the projection volume
+
+    if ~exist('sample', 'var')
         sample = 1;
+    end
+    
+    if ~exist('showCam', 'var')
+        showCam = false;
     end
     
     [height, width] = size(depthmap);
@@ -31,4 +40,26 @@ function [pts3d, rgb] = GeneratePointCloudsFromOneDepthmap(cam, depthmap, sample
     
     pts3d = points3D;
     rgb = CC;
+    
+    if showCam
+        % add camera
+        pImg = [1, 1, 1;
+            1, height, 1;
+            width, 1, 1;
+            width, height, 1]';
+        pImg3d = K\pImg;
+                
+        pts3d = [pts3d pImg3d zeros(3, 1)];
+        
+        rgb = [rgb; ones(5, 3).*128];
+        
+        fId = size(pts3d, 2)-1;
+        faces = [3 fId fId-4 fId-3;
+            3 fId fId-3 fId-2;
+            3 fId fId-2 fId-1;
+            3 fId fId-1 fId-4;
+            3 fId-1 fId-2 fId-3;
+            3 fId-2 fId-3 fId-4];
+    end
+                
 end
