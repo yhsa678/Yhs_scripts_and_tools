@@ -28,12 +28,13 @@ if mod(imgId, 50) == 0
     % clear figures to speed up the visualization a bit
     % no use clf, could avoid blinking..., but seems to slow down the
     % showing procedure
-    figure(hFig), clf;
+%     figure(hFig), clf;
 end
     
 set(gcf, 'Position', windowSize);
 figure(hFig);image(img);
 axis('off'); axis('equal'); axis('tight');
+set(gca,'LooseInset', get(gca,'TightInset'));
 drawnow;
 
 pause(timeout);

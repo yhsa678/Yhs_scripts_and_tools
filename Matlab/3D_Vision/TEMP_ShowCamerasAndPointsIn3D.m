@@ -1,27 +1,40 @@
 function ShowCamerasAndPointsIn3D(modelfile, option)
 % option == 1, show '.nvm' file
 % option == 2, show pre-saved mat, which contains variable 'cam' and 'p3d'
-if nargin < 2
+if ~exist('option', 'var')
     option = 1;
 end
 %%
 if option == 1
     [cam, p3d] = ReadNVM(modelfile);
+    cam = AddVisible3DPointsToCamera(cam, p3d);
 else option == 2
     % load as .mat file
     load(modelfile);
 end
 %%
-fig = figure, clf, hold on
+pts3d = [];
+for k = 1:numel(p3d)
+     pts3d = [pts3d; p3d(k).pos];
+end
+xmin = min(pts3d(:, 1)); xmax = max(pts3d(:, 1));
+ymin = min(pts3d(:, 2)); ymax = max(pts3d(:, 2));
+zmin = min(pts3d(:, 3)); zmax = max(pts3d(:, 3));
+    
 
-set(fig,'Position',[200 200 960 800]);
+%%
+fig = figure; clf, hold on;
+
+set(fig,'Position', [100 20 900 500]);
+set(gca,'LooseInset', get(gca,'TightInset'));
 grid on;
 hax = gca;
 view(hax, [-16 20]);
 title('Cameras and 3D Points');
-xlabel('x'); ylabel('y'); zlabel('z');
-axis vis3d
-axis([-1.5 0.1 -1 0.3 -0.1 0.5]);
+xlabel('X-axis'); ylabel('Y-axis'); zlabel('Z-axis');
+axis vis3d;
+
+axis([xmin-0.03 xmax+0.03 ymin-0.03 ymax+0.03 zmin-0.03 zmax+0.03]);
 
 % only draw a subset of 3d points
 ptsShowFlag = zeros(numel(p3d), 1);
