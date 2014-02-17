@@ -24,7 +24,7 @@ function [pts3d, rgb, faces] = GeneratePointCloudsFromOneDepthmap(cam, depthmap,
     ind = sub2ind([height, width], Y, X);
     depthValue = depthmap(ind);
     
-    img = imread(cam.imgpath);
+    img = imread(cam.filepath);
     if cam.channel == 1
         % if it is gray image
         RR = img; GG = img; BB = img;
