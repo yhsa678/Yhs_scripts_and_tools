@@ -1,5 +1,0 @@
-USAGE: dvf.cmd fullpath fullpath
-
-
-virtualdub + powerpoint
-
