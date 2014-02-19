@@ -1,8 +1,15 @@
-function [camera, points3D] = ReadNVM(nvmFileName)
+function [camera, points3D] = ReadNVM(nvmFileName, readCamOnly)
 
     % credit: https://github.com/ezheng/script
     % Input: nvm files
     % Output: cameras and 3d points
+    
+    if ~exist('readCamOnly', 'var')
+        readCamOnly = false;
+    end
+    
+    camera = [];
+    points3D = [];
 
     fid = fopen(nvmFileName);
     assert(fid>0, sprintf('Read %s file error!\n', nvmFileName));
@@ -38,7 +45,11 @@ function [camera, points3D] = ReadNVM(nvmFileName)
 
     % skip empty line?
     str = fgets(fid);
-
+    
+    if readCamOnly
+        return;
+    end
+    
     % read 3d points
     numOf3DPoints = str2num(fgets(fid));
 

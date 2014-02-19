@@ -86,13 +86,13 @@ end
 
 % write out color coded 
 % sem = load(fullfile(folder, d(1).name));
-fout = fopen('Color_Code.txt', 'w');
-for k = 2:size(COLOR_CODE, 1)
-    if sum(COLOR_CODE(k, :)) >= 1
-        fprintf(fout, '%s\t\t\t%d %d %d\n', char(sem.names(k-1)), ...
-        COLOR_CODE(k, 1), COLOR_CODE(k, 2), COLOR_CODE(k, 3));
-    end
-end
-fclose(fout);
+% fout = fopen('Color_Code.txt', 'w');
+% for k = 2:size(COLOR_CODE, 1)
+%     if sum(COLOR_CODE(k, :)) >= 1
+%         fprintf(fout, '%s\t\t\t%d %d %d\n', char(sem.names(k-1)), ...
+%         COLOR_CODE(k, 1), COLOR_CODE(k, 2), COLOR_CODE(k, 3));
+%     end
+% end
+% fclose(fout);
 
 return

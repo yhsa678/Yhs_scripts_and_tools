@@ -1,6 +1,10 @@
-function pm = ReadPairMatchFile(filename)
+function pm = ReadPairMatchFile(filename, maxMatch)
 % read pair match file that is exported by VisualSFM -> pairwise match ->
 % export F-matrix match
+
+if ~exist('maxMatch', 'var')
+    maxMatch = inf;
+end
 
 fin = fopen(filename, 'r');
 
@@ -35,6 +39,10 @@ while 1
     end
     if mod(kid, 100) == 0
         fprintf(1, 'Reading %d matched pairs...\r\n', kid);
+    end
+    
+    if kid > maxMatch
+        break;
     end
     kid = kid+1;
 end

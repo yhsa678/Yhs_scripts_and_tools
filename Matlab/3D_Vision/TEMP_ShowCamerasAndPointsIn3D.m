@@ -34,11 +34,11 @@ title('Cameras and 3D Points');
 xlabel('X-axis'); ylabel('Y-axis'); zlabel('Z-axis');
 axis vis3d;
 
-axis([xmin-0.03 xmax+0.03 ymin-0.03 ymax+0.03 zmin-0.03 zmax+0.03]);
+axis([xmin-0.03+4 xmax+0.03 ymin-0.03 ymax+0.03 zmin-0.03 zmax+0.03]);
 
 % only draw a subset of 3d points
 ptsShowFlag = zeros(numel(p3d), 1);
-ptsShowFlag(1:5:end) = 1;
+ptsShowFlag(1:20:end) = 1;
 
 timeout = 0.08;
 for k = 1:numel(cam)
