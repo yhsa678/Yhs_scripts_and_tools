@@ -36,7 +36,7 @@ figure(hFig);image(img);
 axis('off'); axis('equal'); axis('tight');
 set(gca,'LooseInset', get(gca,'TightInset'));
 drawnow;
-PrintAxesToFile(sprintf('images-%04d.jpg', imgId), gca);
+% PrintAxesToFile(sprintf('semantic-%04d.jpg', imgId), gca);
 pause(timeout);
 
 

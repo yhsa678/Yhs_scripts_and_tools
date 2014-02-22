@@ -41,7 +41,12 @@ Write3DPointsAndFacesToPlyFile(sprintf('cam%03d.ply', kid), pts3d, rgb, faces);
 Write3DPointsToPlyBin(fullfile(folder, 'cam_total.ply'), total_p3d, total_rgb);
 
 %%
-[pts3d, rgb, faces] = GeneratePointCloudsFromOneDepthmapGlobal(cam(1), imresize(dep, [2304 3072], 'Method', 'nearest'), 1, 1);
+kid = 2;
+cam(kid)
+figure, image(imread(cam(kid).filepath))
+dep = ReadDavidDepthData('dense\depth-000\frame-0350-best-depth.data', 1);
+%%
+[pts3d, rgb, faces] = GeneratePointCloudsFromOneDepthmapGlobal(cam(kid), imresize(dep, [540 960], 'Method', 'nearest'), 1, 1);
 % Write3DPointsToPlyFile(sprintf('cam%03d.ply', kid), pts3d, rgb);
 Write3DPointsAndFacesToPlyFile('cam-001.ply', pts3d, rgb, faces);
 
