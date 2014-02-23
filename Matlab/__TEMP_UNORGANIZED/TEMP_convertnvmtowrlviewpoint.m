@@ -1,3 +1,9 @@
+%% 
+cam = ReadNVM('model.nvm');
+cam = AddCameraImageProperty(cam, [pwd '\image']);
+cam = CalcKRTfromNVMCamera(cam);
+
+%%
 fout = fopen('view.txt', 'w');
 for k = 1:numel(cam);
     rx = [1 0 0 3.14];
