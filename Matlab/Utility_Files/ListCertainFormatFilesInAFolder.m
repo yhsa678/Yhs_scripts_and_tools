@@ -1,8 +1,12 @@
 function list = ListCertainFormatFilesInAFolder(folder, fmt, boolSubFolder)
     % list certain .fmt files inside a folder (including subfolder)
     % if use fmt as '.', basically could list every thing
-    if nargin < 3 
+    if ~exist('boolSubFolder', 'var')
         boolSubFolder = false;
+    end
+    
+    if ~exist('fmt', 'var')
+        fmt = '.';
     end
     
     fmt = upper(fmt); % all compare in uppercase
