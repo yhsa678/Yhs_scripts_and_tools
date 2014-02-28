@@ -1,4 +1,5 @@
 @echo off
+REM 
 REM Run VisualSFM plus PMVS dense reconstruction at a single bat 
 REM 
 
