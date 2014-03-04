@@ -15,4 +15,8 @@
 
 3. try `Powerpoint` or `Movie Maker` to join the video clips, linear editing.
 
+4. `FormatFactory` - use to convert video formats [http://www.pcfreetime.com/](http://www.pcfreetime.com/)
 
+5. `CamStudio` - use to capture screen clips [http://camstudio.org/](http://camstudio.org/)
+
+6. `K-lite codec` - install usually used video codec [http://www.free-codecs.com/download/k_lite_mega_codec_pack.htm](http://www.free-codecs.com/download/k_lite_mega_codec_pack.htm)
