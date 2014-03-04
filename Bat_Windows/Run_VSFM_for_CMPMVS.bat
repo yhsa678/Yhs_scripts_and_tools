@@ -5,7 +5,7 @@ REM
 
 set vsfm=D:\Hongsheng\Test_Libraries_Runtime\SfM_MVS\VisualSFM_windows_cuda_64bit\visualSFM.exe
 set imgdir=I:\Hongsheng_Test\J6_2_kit
-set resName=res.nvm
+set resName=cmp.nvm
 
 if not [%1]==[] (set imgdir=%1)
 if not [%2]==[] (set resName=%2)
