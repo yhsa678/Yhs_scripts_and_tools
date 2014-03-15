@@ -1,12 +1,21 @@
-function normals = points2normals(points)
-    % estimating a normal vector based on nearby 100 points
-    % points is 3 * n matrix for n points
+function normals = points2normals(points, nearbyPoints)
+%POINTS2NORMALS 
+%   slightly modified, yhs
+%
+%   estimating a normal vector based on nearby 100 points
+%   points is 3 * n matrix for n points
+%
+%   See also vertexNormal, faceNormal
+    
+    if ~exist('nearbyPoints', 'var')
+        nearbyPoints = 100;
+    end
 
     if size(points,2)==3 && size(points,1)~=3
         points = points';
     end
     
-    normals = lsqnormest(points, 100);
+    normals = lsqnormest(points, nearbyPoints);
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
