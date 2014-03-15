@@ -40,7 +40,7 @@ for k = 1:length(d)
         numOfCvted = numOfCvted + subnum;
         nameOfCvtedImg = strvcat(nameOfCvtedImg, subnames);
     else
-        if strfind(d(k).name, ['.' srcFmt])
+        if strfind(lower(d(k).name), ['.' lower(srcFmt)])
             pos = strfind(d(k).name, '.');
             tarName = [d(k).name(1:pos(end)-1) '.' tarFmt];
            
