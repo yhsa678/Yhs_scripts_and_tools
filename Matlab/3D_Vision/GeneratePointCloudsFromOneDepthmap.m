@@ -1,10 +1,13 @@
 function [pts3d, rgb, faces] = GeneratePointCloudsFromOneDepthmap(cam, depthmap, sample, showCam)
-% generate 3D point clouds from one depthmap and its camera
-% use intrisic matrix only, under camera coordinate
-% optionally: 
-% output camera projection center and image plane
-% i.e. 5 points: camera center, upleft, upright, lowleft, lowright of image
-% plane, and 6 faces of the projection volume
+%GENERATEPOINTCLOUDSFROMONEDEPTHMAP
+%   generate 3D point clouds from one depthmap and its camera
+%   use intrisic matrix only, under camera coordinate
+%   optionally: 
+%   output camera projection center and image plane
+%   i.e. 5 points: camera center, upleft, upright, lowleft, lowright of image
+%   plane, and 6 faces of the projection volume
+%
+%   See also GeneratePointCloudsFromOneDepthmapGlobal
 
     if ~exist('sample', 'var')
         sample = 1;

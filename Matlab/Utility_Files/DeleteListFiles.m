@@ -1,5 +1,7 @@
 function ct = DeleteListFiles(list)
-    % delete the files that specify in the list
+%DELETELISTFILES delete the files that specify in the list
+%
+%   See also CopyListFilesToFolder
     ct = 0;
     for k = 1:numel(list)
         if exist(list(k).filepath, 'file')
