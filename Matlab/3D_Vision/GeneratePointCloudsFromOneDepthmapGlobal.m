@@ -1,6 +1,9 @@
 function [pts3d, rgb, faces] = GeneratePointCloudsFromOneDepthmapGlobal(cam, depthmap, sample, showCam)
-% generate 3D point clouds from one depthmap and its camera
-% use intrisic and extrinsic matrix, under global coordinate
+%GENERATEPOINTCLOUDSFROMONEDEPTHMAPGLOBAL
+%   generate 3D point clouds from one depthmap and its camera
+%   use intrisic and extrinsic matrix, under global coordinate
+%
+%   See also GeneratePointCloudsFromOneDepthmap
     if ~exist('sample', 'var')
         sample = 1;
     end
