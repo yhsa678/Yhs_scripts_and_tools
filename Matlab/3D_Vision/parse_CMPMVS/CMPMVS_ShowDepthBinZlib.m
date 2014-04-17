@@ -1,4 +1,4 @@
-function CMPMVS_ShowDepthBinZlib(depfilename, imgfilename)
+function dep = CMPMVS_ShowDepthBinZlib(depfilename, imgfilename)
 %CMPMVS_SHOWDEPTHBINZLIB
 %   See also
 
