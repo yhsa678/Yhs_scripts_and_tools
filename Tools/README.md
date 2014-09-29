@@ -6,6 +6,10 @@
 
 2. `jhead.exe` - easy to look at EXIF info of image, [http://www.sentex.net/~mwandel/jhead/](http://www.sentex.net/~mwandel/jhead/)
 
+3. `cloc-1.60.exe` - count lines of code, [http://cloc.sourceforge.net/](http://cloc.sourceforge.net/)
+
+4. `putty.exe` - a ssh tool
+
 ## Tools to make video
 1. `v2f.cmd` 
 	> locate in `OpenCV_Tools\Decompose_Video_into_Frames.exe`, a simple tool to decompose a video into images   

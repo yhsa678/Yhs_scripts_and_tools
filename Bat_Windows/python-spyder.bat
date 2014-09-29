@@ -1,0 +1,1 @@
+C:\Users\yhs\AppData\Local\Enthought\Canopy\User\python.exe C:\Users\yhs\AppData\Local\Enthought\Canopy\User\Lib\site-packages\spyderlib\spyder.py
