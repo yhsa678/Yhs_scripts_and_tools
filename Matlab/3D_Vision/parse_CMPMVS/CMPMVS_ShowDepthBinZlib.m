@@ -20,7 +20,7 @@ subplot(1, 2, 2), imshow(img);
 axis equal; axis tight;
 
 dep(dep==-1) = lmin;
-figure;
+% figure;
 % imshowpair(dep, img, 'montage');
-imshowpair(dep, img, 'blend', 'Scaling', 'independent');
-axis equal; axis tight;
+% imshowpair(dep, img, 'blend', 'Scaling', 'independent');
+% axis equal; axis tight;

@@ -13,7 +13,7 @@ P2 = load([f2no '_P.txt']);
 F12 = fundfromcameras(P1, P2);
 
 %%
-x = [628 500 1]';
+x = [628 500 3]';
 F12*x
 lines = epipolarLine(F12, x(1:2)');
 
